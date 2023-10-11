@@ -26,7 +26,7 @@
 
         <div class="weather-box">
           <div class="temp">{{ Math.round(weather.main.temp) }} C</div>
-          <div class="weather">{{ weather.weather[0].main }}</div>
+          <div class="weather">{{ weather.weather[0].description.toUpperCase() }}</div>
         </div>
       </div>
     </main>
@@ -49,7 +49,6 @@ export default {
     fetchWeather(e) {
       if (e.key == "Enter") {
         fetch(
-          // ${this.url_base}forecast?${this.query}&units=metric&APPID=${this.api_key}`
           `${this.url_base}weather?q=${this.query}&units=metric&APPID=${this.api_key}`
         )
           .then((res) => {
@@ -114,7 +113,10 @@ body {
 #app {
   background-image: url("./assets/pexels-francesco-paggiaro-cold.jpg");
   background-size: cover;
-  /* background-position: bottom; */
+  background-position: center center;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 100%;
   transition: 0.4s;
 }
 
